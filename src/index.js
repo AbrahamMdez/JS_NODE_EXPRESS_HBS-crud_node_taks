@@ -11,6 +11,7 @@ const session = require('express-session');
 //Initializations
 const app = express();
 
+
 //Settings
 app.set('port', process.env.PORT || 3000);
 //Al requerir path en la linea 3, aqui lo usamos, que lo que nos hace es buscar directorios donde
@@ -43,7 +44,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
 //A traves de esta configuracion nos van a poder permitir autenticar al usuario y almacenarlo temporalmente.
 app.use(session({
-    secret: mysecretspp,
+    secret: 'mysecretspp',
     resave: true,
     saveUninitialized: true
 }));
@@ -52,6 +53,12 @@ app.use(session({
 //Global Variables
 
 //Routes
+//Aqui es donde vamos a requerir los archivos que es donde van estan las rutas para los usuarios, notas e index
+//que será el directorio principal.
+app.use(require('./routes/index'));
+app.use(require('./routes/users'));
+app.use(require('./routes/notes'));
+
 
 //State Files
 
