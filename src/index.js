@@ -10,6 +10,8 @@ const session = require('express-session');
 
 //Initializations
 const app = express();
+//Aquí requerimos la conexion a la bbdd.
+require('./database');
 
 
 //Settings
@@ -61,6 +63,10 @@ app.use(require('./routes/notes'));
 
 
 //State Files
+//Aqui le estamos diciendo donde está la carpeta public, para despues poder configurarla.
+//__dirname es una constante que nos sirve para buscar la carpeta que le digamos despues
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 //Server is listening
 app.listen(app.get('port'), () => {
