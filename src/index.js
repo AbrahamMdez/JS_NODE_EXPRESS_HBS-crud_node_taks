@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 //Aquí requerimos a handlebars que ya fué instalado como npm y almacenamos en una constante
 const exphbs = require('express-handlebars');
-//Aqui requerimos a otro modulo que instalamos
+//Aqui requerimos a otro modulo que instalamos, 
 const methodOverride = require('method-override');
 //Aqui requerimos otros modulo que instalamos.
 const session = require('express-session');
