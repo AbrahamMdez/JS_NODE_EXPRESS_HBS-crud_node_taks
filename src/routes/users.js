@@ -5,11 +5,11 @@ const router = express.Router();
 //Al ser rutas para usuarios, le vamos a poner que vaya a usuarios primero y despues a registrarse o 
 //autenticarse. 
 router.get('/user/signin', (req, res) => {
-    res.send('User registred');
+    res.render('users/signin');
 });
 
 router.get('/user/signup', (req, res) => {
-    res.send('User conected');
+    res.render('users/signup');
 });
 
 module.exports = router;
