@@ -7,13 +7,13 @@ router.get('/notes/add', (req, res) => {
 });
 
 router.post('/notes/new-notes', (req, res) => {
-    const { title, textarea} = req.body;
+    const { title, textarea } = req.body;
     const errors = [];  
     if (!title) {   
-        errors.push({text: 'Inserte un titulo'})
-    } 
+        errors.push({text: 'Inserte un titulo'});
+    }
     if (!textarea) {
-        errors.push({text: 'Inserte un texto'}) 
+        errors.push({text: 'Inserte un texto'});
     } 
     if (errors.lenght > 0 ) {
         res.render('/notes/new-notes', {
@@ -30,7 +30,6 @@ router.post('/notes/new-notes', (req, res) => {
 router.get('/notes', (req, res) => {
     res.send('Notes from database');
 });
-
 
 module.exports = router;
 
