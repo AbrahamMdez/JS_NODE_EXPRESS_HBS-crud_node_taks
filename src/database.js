@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const uri = 'mongodb://localhost:27017/notes-db-app';
 
 //Aqui requerimos conexion con nuestra bbdd NOTES DB APP
-mongoose.connect(uri, { useNewUrlParser: true }, { useUnifiedTopology: true });
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 mongoose.connection.on('open', _=> {
     console.log('Database conected on', uri);

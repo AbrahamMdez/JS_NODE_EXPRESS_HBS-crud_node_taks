@@ -23,17 +23,18 @@ router.post('/notes/new-notes', async (req, res) => {
             errors,
             title,
             textarea
-        });
+        })
     } else {
         const newNote = new Note ({ title, textarea });
         await newNote.save();
-        res.redirect('notes');
-    };
+        res.redirect('/notes');
+    }
 });
 
 //Aqui vamos a crear rutas para las notas que recibiremos de la bbdd.
-router.get('/notes', (req, res) => {
-    res.send('Notes from database');
+router.get('/notes', async (req, res) => {
+    const notes = await Note.find();
+    res.render('notes/all-notes', { notes });
 });
 
 module.exports = router;
