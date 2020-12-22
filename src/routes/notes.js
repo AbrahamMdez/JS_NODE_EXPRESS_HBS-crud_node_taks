@@ -8,14 +8,15 @@ router.get('/notes/add', (req, res) => {
 
 router.post('/notes/new-notes', (req, res) => {
     const { title, textarea } = req.body;
+    console.log({ title, textarea });
     const errors = [];  
     if (!title) {   
         errors.push({text: 'Inserte un titulo'});
     }
     if (!textarea) {
         errors.push({text: 'Inserte un texto'});
-    } 
-    if (errors.lenght > 0 ) {
+    }
+    if (errors.length > 0 ) {
         res.render('/notes/new-notes', {
             errors,
             title,
