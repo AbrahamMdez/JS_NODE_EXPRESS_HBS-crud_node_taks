@@ -9,23 +9,23 @@ router.get('/notes/add', (req, res) => {
 });
 
 router.post('/notes/new-notes', async (req, res) => {
-    const { title, textarea } = req.body;
-    console.log({ title, textarea });
+    const { title, description } = req.body;
+    console.log({ title, description });
     const errors = [];  
     if (!title) {   
         errors.push({text: 'Inserte un titulo'});
     }
-    if (!textarea) {
+    if (!description) {
         errors.push({text: 'Inserte un texto'});
     }
     if (errors.length > 0 ) {
         res.render('/notes/new-notes', {
             errors,
             title,
-            textarea
+            description
         })
     } else {
-        const newNote = new Note ({ title, textarea });
+        const newNote = new Note ({ title, description });
         await newNote.save();
         res.redirect('/notes');
     }
