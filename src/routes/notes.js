@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
+const Note = require('../models/Note');
+
 //Aqui creamos una ruta que es donde vamos a renderizar archivo.hbs new-notes.
 router.get('/notes/add', (req, res) => {
     res.render('notes/new-notes');
 });
 
-router.post('/notes/new-notes', (req, res) => {
+router.post('/notes/new-notes', async (req, res) => {
     const { title, textarea } = req.body;
     console.log({ title, textarea });
     const errors = [];  
@@ -23,7 +25,9 @@ router.post('/notes/new-notes', (req, res) => {
             textarea
         });
     } else {
-        res.send('ok');
+        const newNote = new Note ({ title, textarea });
+        await newNote.save();
+        res.redirect('notes');
     };
 });
 
