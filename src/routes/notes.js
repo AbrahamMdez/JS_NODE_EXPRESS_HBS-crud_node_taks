@@ -33,7 +33,8 @@ router.post('/notes/new-notes', async (req, res) => {
 
 //Aqui vamos a crear rutas para las notas que recibiremos de la bbdd.
 router.get('/notes', async (req, res) => {
-    const notes = await Note.find();
+    //Hay que recordar usar .lean() para evitar errores con handlebars al renderizar o usar destructores
+    const notes = await Note.find().lean();
     res.render('notes/all-notes', { notes });
 });
 
