@@ -38,6 +38,13 @@ router.get('/notes', async (req, res) => {
     res.render('notes/all-notes', { notes });
 });
 
+//Creamos una ruta para poder editar las notas que teniamos ya creadas en anteriores rutas
+router.get('/notes/edit/:id', (req, res) => {
+    
+})
+
+
+
 module.exports = router;
 
 
