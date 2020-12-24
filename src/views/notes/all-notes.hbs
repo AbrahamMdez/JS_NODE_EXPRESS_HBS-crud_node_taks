@@ -1,6 +1,6 @@
 {{#each notes}}
         <div>
-            <h4>{{this.title}} <a href="/notes/edit/{{_id}}">EDIT</a></h4>
+            <h4>{{this.title}} <a href="/notes/edit-notes/{{_id}}">EDIT</a></h4>
             <p>{{this.description}}</p>
         </div>
         <form action="/notes/delete/{{_id}}?_method=DELETE" method="POST">

@@ -1,7 +1,7 @@
 <h3>EDIT NOTES</h3>
 <!--Aqui llamamos a method que instalamos previamente llamado Override (_method) y le decimos que lo valide
 //con un metodo PUT. El simbolo ? quiere decir que eso es una consulta-->
-<form action="/notes/edit/{{notes._id}}?_method=PUT" method="POST">
+<form action="/notes/edit-notes/{{_id}}?_method=PUT" method="POST">
     <input type="hidden" name="_method" value="PUT">
     <input type="text" name="title" placeholder="Title..." value="{{this.title}}" autofocus>
     <input type="textarea" name="description" placeholder="Description" value="{{this.description}}">
