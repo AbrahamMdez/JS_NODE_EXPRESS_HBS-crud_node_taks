@@ -33,26 +33,8 @@ router.post('/notes/new-notes', async (req, res) => {
 
 //Aqui vamos a crear rutas para las notas que recibiremos de la bbdd.
 router.get('/notes', async (req, res) => {
-    //Hay que recordar usar .lean() para evitar errores con handlebars al renderizar o usar destructores
-    const notes = await Note.find().lean();
+    const notes = await Note.find();
     res.render('notes/all-notes', { notes });
-});
-
-//Creamos una ruta para poder editar las notas que teniamos ya creadas en anteriores rutas
-router.get('/notes/edit/:id', async (req, res) => {
-    const note = await Note.findById(req.params.id);
-    res.render('notes/edit-notes', { note });
-});
-
-router.put('/notes/edit-notes/:id', async (req, res) => {
-    const { title, description } = req.body;
-    await Note.findByIdAndUpdate(req.params.id, { title, description }).lean();
-    res.redirect('/notes');
-});
-
-router.delete('/notes/delete/:id', (req, res) => {
-    console.log(req.params.id);
-    res.send('ok');
 });
 
 module.exports = router;
